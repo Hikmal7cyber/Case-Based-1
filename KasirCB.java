@@ -7,14 +7,13 @@ public class KasirCB{
         int pilih, total = 0, totMakan = 0, totMinum = 0, jumlah = 0;
         int nasgor = 0, abm = 0, soto = 0, teh = 0, jrk = 0, diskon = 0;
         int setelah;
-        char lanjut;
-        String hari;
-
+        String hari, makan;
+        String lanjut = "Y";
         System.out.println("------ Selamat Pagi ------");
-        System.out.println("Masukkan Hari: ");
+        System.out.print("Masukkan Hari: ");
         hari = in.nextLine();
 
-        while (lanjut == 'y') {
+        while (lanjut.equalsIgnoreCase("Y")) {
             System.out.println("========= Warung Makan =========");
             System.out.println("1. Nasi Goreng Spesial Rp 15.000"); // nasgor
             System.out.println("2. Ayam Bakar Madu Rp 25.000"); // abm
@@ -22,7 +21,7 @@ public class KasirCB{
             System.out.println("4. Es Teh Manis Rp 5.000"); //teh
             System.out.println("5. Es Jeruk Rp. 7.000"); // jrk
             System.out.println("----------------------------------");
-            System.out.println("Masukkan pilihan: ");
+            System.out.print("Masukkan pilihan: ");
             pilih = in.nextInt();
             System.out.print("Masukkan jumlah : ");
             jumlah = in.nextInt();
@@ -45,8 +44,17 @@ public class KasirCB{
             }else {
                 System.out.println("Menu Tidak Valid!!!");
             }
-            
-            total = totMakan + totMinum;
+
+            in.nextLine();
+            System.out.print("Pesanan lain (Y/T) :");
+            lanjut = in.nextLine();
+        }
+
+        System.out.print("Bungkus / takeaway: ");
+        makan = in.nextLine();
+
+        
+        total = totMakan + totMinum;
 
             if (total > 50000) { // DISKON BELANJA
                 setelah = total - (total * 10/100);
@@ -62,13 +70,6 @@ public class KasirCB{
             if (hari.equalsIgnoreCase("Jumat") && abm > 0) { //DISKON HARI JUMAT
                 diskon += 5000;
             }
-
-            
-            System.out.print("Pesanan lain (Y/T) :");
-            // lanjut
-        }
-        
-
         
     }
 }
